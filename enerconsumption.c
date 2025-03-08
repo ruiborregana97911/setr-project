@@ -1,3 +1,14 @@
+/** \file enerconsumption.c 
+ * 	\brief Funções para registrar e calcular o consumo de energia elétrica.
+ * 
+ * 	Este arquivo contém funções para inicializar um vetor de consumo,
+ * 	adicionar leituras e calcular valores como pico de consumo, consumo
+ * 	total diário e custo diário.
+ * 	\author Rui Borregana
+ * 	\date 08/03/2025
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,9 +16,30 @@
 #define COST_KWH 0.16
 
 
-
+/**
+ * \brief Inicializa o vetor de consumo com zeros
+ * \param vect Vetor que armazena o consumo de energia a cada 15 minutos.
+ */
 void ecInit(float vect[]);
+
+/**
+ * \brief Adiciona uma nova leitura de consumo ao vetor.
+ *
+ * A função solicita ao usuário que insira um valor de consumo e o adiciona
+ * ao vetor na posição adequada.
+ *
+ * \param vect Vetor que armazena o consumo de energia a cada 15 minutos.
+ */
 void ecAdd(float vect[]);
+
+/**
+ * \brief Calcula o pico de consumo, consumo total diário e custo diário.
+ *
+ * \param vect Vetor que armazena o consumo de energia a cada 15 minutos.
+ * \param peak Ponteiro para armazenar o valor do pico de consumo.
+ * \param dailyValue Ponteiro para armazenar o consumo total diário.
+ * \param dailyCost Ponteiro para armazenar o custo total diário.
+ */
 void dtSum(float vect[], float *peak, float *dailyValue, float *dailyCost);
 
 
@@ -38,7 +70,6 @@ int main(){
 
 // Funções :
 
-//inicia  todas a posicoes do array com o valor zero
 void ecInit(float vect[]){
 	
 	for(int i=0;i<96;i++){
@@ -48,7 +79,7 @@ void ecInit(float vect[]){
 	
 	}	
 
-//adiciona um novo valor que e pedido ao utilizador
+
 void ecAdd(float vect[]){
 	
 	static int index=0;
@@ -68,7 +99,7 @@ void ecAdd(float vect[]){
 	
 	}
 
-//funcao de computacao de varios valores
+
 void dtSum(float vect[], float *peak, float *dailyValue, float *dailyCost){
 	
 	//encontar maximo
