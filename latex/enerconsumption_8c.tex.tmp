@@ -1,0 +1,96 @@
+\hypertarget{enerconsumption_8c}{}\doxysection{enerconsumption.\+c File Reference}
+\label{enerconsumption_8c}\index{enerconsumption.c@{enerconsumption.c}}
+
+
+Funções para registrar e calcular o consumo de energia elétrica.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for enerconsumption.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{enerconsumption_8c_a241619da9ec34f9d11b261c42d22a8d9}\label{enerconsumption_8c_a241619da9ec34f9d11b261c42d22a8d9}} 
+\#define {\bfseries COST\+\_\+\+KWH}~0.\+16
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{enerconsumption_8c_a68d59f0c55e7f7ff478c01bd1ccf6877}{ec\+Init}} (float vect\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Inicializa o vetor de consumo com zeros. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enerconsumption_8c_acbad6f9184dc4c305573d28135e36cef}{ec\+Add}} (float vect\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Adiciona uma nova leitura de consumo ao vetor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enerconsumption_8c_a1ddaf67a09c6b4e23b482e2561097f15}{dt\+Sum}} (float vect\mbox{[}$\,$\mbox{]}, float $\ast$peak, float $\ast$daily\+Value, float $\ast$daily\+Cost)
+\begin{DoxyCompactList}\small\item\em Calcula o pico de consumo, consumo total diário e custo diário. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{enerconsumption_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{enerconsumption_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funções para registrar e calcular o consumo de energia elétrica. 
+
+Este arquivo contém funções para inicializar um vetor de consumo, adicionar leituras e calcular valores como pico de consumo, consumo total diário e custo diário. \begin{DoxyAuthor}{Author}
+Rui Borregana 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08/03/2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{enerconsumption_8c_a1ddaf67a09c6b4e23b482e2561097f15}\label{enerconsumption_8c_a1ddaf67a09c6b4e23b482e2561097f15}} 
+\index{enerconsumption.c@{enerconsumption.c}!dtSum@{dtSum}}
+\index{dtSum@{dtSum}!enerconsumption.c@{enerconsumption.c}}
+\doxysubsubsection{\texorpdfstring{dtSum()}{dtSum()}}
+{\footnotesize\ttfamily void dt\+Sum (\begin{DoxyParamCaption}\item[{float}]{vect\mbox{[}$\,$\mbox{]},  }\item[{float $\ast$}]{peak,  }\item[{float $\ast$}]{daily\+Value,  }\item[{float $\ast$}]{daily\+Cost }\end{DoxyParamCaption})}
+
+
+
+Calcula o pico de consumo, consumo total diário e custo diário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Vetor que armazena o consumo de energia a cada 15 minutos. \\
+\hline
+{\em peak} & Ponteiro para armazenar o valor do pico de consumo. \\
+\hline
+{\em daily\+Value} & Ponteiro para armazenar o consumo total diário. \\
+\hline
+{\em daily\+Cost} & Ponteiro para armazenar o custo total diário. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{enerconsumption_8c_acbad6f9184dc4c305573d28135e36cef}\label{enerconsumption_8c_acbad6f9184dc4c305573d28135e36cef}} 
+\index{enerconsumption.c@{enerconsumption.c}!ecAdd@{ecAdd}}
+\index{ecAdd@{ecAdd}!enerconsumption.c@{enerconsumption.c}}
+\doxysubsubsection{\texorpdfstring{ecAdd()}{ecAdd()}}
+{\footnotesize\ttfamily void ec\+Add (\begin{DoxyParamCaption}\item[{float}]{vect\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Adiciona uma nova leitura de consumo ao vetor. 
+
+A função solicita ao usuário que insira um valor de consumo e o adiciona ao vetor na posição adequada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Vetor que armazena o consumo de energia a cada 15 minutos. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{enerconsumption_8c_a68d59f0c55e7f7ff478c01bd1ccf6877}\label{enerconsumption_8c_a68d59f0c55e7f7ff478c01bd1ccf6877}} 
+\index{enerconsumption.c@{enerconsumption.c}!ecInit@{ecInit}}
+\index{ecInit@{ecInit}!enerconsumption.c@{enerconsumption.c}}
+\doxysubsubsection{\texorpdfstring{ecInit()}{ecInit()}}
+{\footnotesize\ttfamily void ec\+Init (\begin{DoxyParamCaption}\item[{float}]{vect\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Inicializa o vetor de consumo com zeros. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Vetor que armazena o consumo de energia a cada 15 minutos. \\
+\hline
+\end{DoxyParams}
