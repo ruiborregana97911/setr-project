@@ -7,25 +7,31 @@
 
 
 void ecInit(float vect[]);
-void ecAdd();
-void dtSum();
+void ecAdd(float vect[]);
+void dtSum(float vect[], float *peak, float *dailyValue, float *dailyCost);
 
 
 int main(){
 	
 	float consumption[96];	//96= numero de intervalos em 24H
-	float peak, dailyValue, dailyCost;
+	float peak=0, dailyValue=0, dailyCost=0;
 	 
 	ecInit(consumption);
 	
-	ecAdd(consumption);
-	ecAdd(consumption);
+	char res;
+	do{
+		ecAdd(consumption);
+		fprintf(stdout, "\nPretende adionar mais valores? (y/n): ");
+		scanf(" %c", &res);	
+			
+			
+	}while(res == 'y');
 	
 	
-		for(int i=0;i<96;i++){
-		
-			fprintf(stdout, "%f \n", consumption[i]);
-		}
+	dtSum(consumption, &peak, &dailyValue, &dailyCost);
+	fprintf(stdout, "\nvalor de pico de consumo: %.3f",peak);
+	fprintf(stdout, "\nvalor de consumo total: %.3f",dailyValue);
+	fprintf(stdout, "\nvalor de custo de consumo: %.2f Euros\n",dailyCost);
 	
 	return 0;}
 
@@ -45,7 +51,7 @@ void ecInit(float vect[]){
 //adiciona um novo valor que e pedido ao utilizador
 void ecAdd(float vect[]){
 	
-	static int index=95;
+	static int index=0;
 	float new_val=0;
 	
 	if(index >=96){
@@ -53,7 +59,7 @@ void ecAdd(float vect[]){
 		}
 	
 	
-	fprintf(stdout, "insira um novo valor: ");
+	fprintf(stdout, "\ninsira um novo valor: ");
 	scanf("%f", &new_val);
 	
 	vect[index]= new_val;
@@ -62,13 +68,28 @@ void ecAdd(float vect[]){
 	
 	}
 
+//funcao de computacao de varios valores
+void dtSum(float vect[], float *peak, float *dailyValue, float *dailyCost){
+	
+	//encontar maximo
+	for(int i=0;i<96;i++){
+		if(vect[i] >= *peak){
+			*peak= vect[i];
+			}
+		}
+	
+	
 
+	//consumo total
+	for(int i=0;i < 96;i++){
+		
+		*dailyValue= *dailyValue + vect[i];
+		}
 
-
-
-
-
-
+	//custo total num dia
+	
+	*dailyCost= *dailyValue * COST_KWH;
+}
 
 
 
